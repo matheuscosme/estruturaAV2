@@ -7,9 +7,10 @@ public class Main {
         lista.adicionarInicio(4);
         lista.adicionarFinal(1);
         lista.printarLista();
+        System.out.println(lista.temRepetidos());
         System.out.println();
-        lista.removerNaPosicao(2);
-        lista.printarListaCompleta();
+        System.out.println(lista.maisRepetido());
+        // lista.printarListaCompleta();
 
 
     }

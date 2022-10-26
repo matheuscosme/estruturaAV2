@@ -134,12 +134,68 @@ public class Lista {
         return removido;
     }
 
+    public int contagemDeElementos(){
+        No aux = this.inicioLista;
+        int cont = 0;
+        while(aux != null){
+            aux = aux.proximo;
+            cont++;
+        }
+        return cont;
+    }
+
+    //Questão 1)
     public int retornarNaPosicao(int posicao) throws EstruturaVaziaException{
         int elemento = removerNaPosicao(posicao).valor;
         adicionarNaPosicao(elemento, posicao);
         return elemento;
     }
-        
+
+    //Questão 2)
+    public void removerMeio() throws EstruturaVaziaException{
+        int meio = this.contagemDeElementos()/2;
+        this.removerNaPosicao(meio);
+    }
+
+    //Questão 3)
+    public boolean temRepetidos() throws EstruturaVaziaException{
+        int cont = 0;
+        for(int i=0;i<this.contagemDeElementos();i++){
+            for(int j=i+1;j<this.contagemDeElementos();j++){
+                if(this.retornarNaPosicao(i)==this.retornarNaPosicao(j)){
+                    cont++;
+                }
+            }
+        }
+        if(cont > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
+    //Questão 4)
+    public int maisRepetido() throws EstruturaVaziaException{
+        int nDeRepeticoes = 0;
+        int maiorNDeRepeticoes = 0;
+        int elementoMaisRepetido = this.inicioLista.valor;
+        for(int i=0;i<this.contagemDeElementos();i++){
+            if(nDeRepeticoes > maiorNDeRepeticoes){
+                elementoMaisRepetido = this.retornarNaPosicao(i-1);
+                maiorNDeRepeticoes = nDeRepeticoes;
+            }
+            nDeRepeticoes = 0;
+            for(int j=i+1;j<this.contagemDeElementos();j++){
+                if(this.retornarNaPosicao(i)==this.retornarNaPosicao(j)){
+                    nDeRepeticoes++;
+                }
+            }
+        }
+        return elementoMaisRepetido;
+    }
+
+
     public void printarLista(){
         No noAtual;
         noAtual = inicioLista;
