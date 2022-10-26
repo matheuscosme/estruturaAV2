@@ -4,14 +4,13 @@ public class Main {
         lista.adicionarInicio(5);
         lista.adicionarInicio(6);
         lista.adicionarInicio(3);
-        lista.adicionarInicio(4);
-        lista.adicionarFinal(1);
+        // lista.adicionarInicio(4);
+        // lista.adicionarFinal(1);
+        // lista.adicionarFinal(2);
         lista.printarLista();
-        System.out.println(lista.temRepetidos());
+        lista.inverterLista();
         System.out.println();
-        System.out.println(lista.maisRepetido());
-        // lista.printarListaCompleta();
-
-
+        lista.printarLista();
+        lista.printarListaCompleta();
     }
 }

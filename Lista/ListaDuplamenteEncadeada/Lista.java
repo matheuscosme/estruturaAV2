@@ -103,36 +103,6 @@ public class Lista {
         }
     }
 
-    public No removerNaPosicao(int posicao) throws EstruturaVaziaException{
-        No removido = null;
-        No aux, aux2;
-        if(this.listaVazia() || posicao<=0){
-            removido = this.removerInicio();
-        }
-        else{
-            removido = aux = this.inicioLista;
-            int indice = 0;
-            while(indice<posicao && removido != null){
-                aux = removido;
-                removido = removido.proximo;
-                indice++;
-            }
-            if (removido == null ){
-                removido = this.removerFinal();
-            }
-            else if(removido.proximo == null){
-                aux.proximo = removido.proximo;
-                removido.anterior = null;
-            }
-            else {
-                aux.proximo = removido.proximo;
-                aux2 = removido.proximo;
-                aux2.anterior = aux;
-                removido.anterior = removido.proximo = null;
-            }
-        }
-        return removido;
-    }
 
     public int contagemDeElementos(){
         No aux = this.inicioLista;
@@ -174,7 +144,7 @@ public class Lista {
             return false;
         }
     }
-    
+
     //Questão 4)
     public int maisRepetido() throws EstruturaVaziaException{
         int nDeRepeticoes = 0;
@@ -193,6 +163,53 @@ public class Lista {
             }
         }
         return elementoMaisRepetido;
+    }
+
+    //Questão 5)
+    public void inverterLista() throws EstruturaVaziaException{
+        int nDeElementos = this.contagemDeElementos();
+        int contador = nDeElementos-1;
+        No primeiro; 
+        No ultimo;
+        for(int i = 0; i<nDeElementos/2;i++){
+            primeiro = this.removerNaPosicao(i);
+            ultimo = this.removerNaPosicao(contador);
+            this.adicionarNaPosicao(primeiro.valor, contador);
+            this.adicionarNaPosicao(ultimo.valor, i);
+            contador--;
+        }
+    }
+
+    //Questão 6)
+    public No removerNaPosicao(int posicao) throws EstruturaVaziaException{
+        No removido = null;
+        No aux, aux2;
+        if(this.listaVazia() || posicao<=0){
+            removido = this.removerInicio();
+        }
+        else{
+            removido = aux = this.inicioLista;
+            int indice = 0;
+            while(indice<posicao && removido != null){
+                aux = removido;
+                removido = removido.proximo;
+                indice++;
+            }
+            if (removido == null ){
+                removido = this.removerFinal();
+            }
+            else if(removido.proximo == null){
+                aux.proximo = removido.proximo;
+                removido.anterior = null;
+            }
+            else {
+                aux.proximo = removido.proximo;
+                aux2 = removido.proximo;
+                aux2.anterior = aux;
+                removido.anterior = removido.proximo = null;
+            }
+        }
+        return removido;
     }
 
 
