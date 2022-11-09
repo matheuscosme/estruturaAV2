@@ -26,12 +26,17 @@ public class Pilha {
     }
   }
 
-  public No removerFinal(){
+   public No removerFinal(){
     No removido = null;
     No auxiliar;
     if(pilhaVazia()){
       System.out.println("Pilha vazia");
-    } else {
+    }
+    else if(this.inicio_pilha.proximoNo == null){
+      removido = this.inicio_pilha;
+      this.inicio_pilha = null;
+    } 
+    else {
       removido = auxiliar = this.inicio_pilha;
       while(removido.proximoNo != null) {
         auxiliar = removido;
