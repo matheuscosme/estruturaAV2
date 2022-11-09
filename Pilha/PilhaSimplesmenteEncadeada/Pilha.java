@@ -46,6 +46,24 @@ public class Pilha {
     }
       return removido;
   }
+  
+    public void inverterPilha(){
+    Pilha pilha = new Pilha();
+    Pilha pilhaAux = new Pilha();
+
+    while (this.inicio_pilha != null){
+      pilha.adicionarFinal(this.removerFinal().elementoArmazenado);
+    }
+
+    while (pilha.inicio_pilha != null){
+      pilhaAux.adicionarFinal(pilha.removerFinal().elementoArmazenado);
+    }
+
+    while (pilhaAux.inicio_pilha != null){
+      this.adicionarFinal(pilhaAux.removerFinal().elementoArmazenado);
+    }
+
+  }
 
   public void printPilha(){
     No auxiliar = inicio_pilha;
